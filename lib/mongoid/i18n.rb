@@ -10,11 +10,6 @@ module Mongoid
         field name, options.merge(:type => LocalizedField)
       end
 
-      def criteria
-        scope = scope_stack.last rescue nil
-        scope || I18n::LocalizedCriteria.new(self)
-      end
-
       protected
       def create_accessors(name, meth, options = {})
         if options[:type] == LocalizedField
